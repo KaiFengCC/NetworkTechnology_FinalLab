@@ -19,11 +19,11 @@ def main():
     page_pull_num = 3
     pullNum = 50 * (page_pull_num+1)
 
-    # for suffix in basesuffix:
-    #     url = baseurl+suffix
-    #     html = askURL(url)
-    #     with open(f'{suffix}.txt',"w",encoding="utf-8") as f:
-    #         f.write(html)
+    for suffix in basesuffix:
+        url = baseurl+suffix
+        html = askURL(url)
+        with open(f'{suffix}.txt',"w",encoding="utf-8") as f:
+            f.write(html)
     #     # for i in range(50,pullNum,50):
     #     #     pageturn_url = pageturn[suffix]+str(i)
     #     #     html = askURL(pageturn_url)
@@ -31,7 +31,7 @@ def main():
     #     #         f.write(html)
     #     #     print("一页爬取结束")
     #     #只爬一页
-    #     break       
+        break       
     with open("main.txt","r",encoding="utf-8") as f:
         data = f.read()
     dataProcessed = dataProcess(data)
@@ -67,7 +67,7 @@ def get_reply(href):
 def askURL (url):
     ua = UserAgent()
     head = {
-        "User-Agent": ua.random
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36"
     }
     response = requests.get(url, headers=head)
     html = response.text
